@@ -10,11 +10,13 @@
   <body class="bg-cover bg-center bg-fixed"
         style="background-image: url('{% static 'images/background.jpg' %}')">
     <div class="container">
-      <h2>Welcome back!</h2>
-      <p>Login to your account now.</p>
       {% if request.user.is_authenticated %}
+        <h2>Hi, {{ request.user.get_full_name }}</h2>
+        <p>You have successfully logged in!</p>
         <a href="{% url 'logout' %}">Logout</a>
       {% else %}
+        <h2>Welcome back!</h2>
+        <p>Login to your account now.</p>
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'signup' %}">Signup</a>
       {% endif %}
